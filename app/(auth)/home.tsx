@@ -42,7 +42,7 @@ export default function Home() {
   }
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.container} edges={["top"]}>
       <StatusBar style="dark" />
       <View style={styles.header}>
         <Text style={styles.welcome}>
@@ -63,9 +63,9 @@ export default function Home() {
 
       {user?.roleName === "Admin" && <AdminPanel router={router} />}
 
-      <TouchableOpacity style={styles.logoutButton} onPress={signOut}>
+      {/* <TouchableOpacity style={styles.logoutButton} onPress={signOut}>
         <Text style={styles.logoutText}>Sair do App</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </SafeAreaView>
   );
 }
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F7FA",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 20,
     gap: 32,
   },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },

@@ -154,14 +154,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 240,
+    height: 240,
     resizeMode: "contain",
     alignSelf: "center",
-    marginBottom: 20,
+    marginBottom: 32,
   },
   title: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: "bold",
     marginBottom: 40,
     textAlign: "center",

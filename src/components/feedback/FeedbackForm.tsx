@@ -47,7 +47,7 @@ export default function FeedbackForm({
       return;
     }
 
-    setIsSubmitting(true); // Trava o botão
+    setIsSubmitting(true);
     try {
       if (feedback) {
         // 2. Transformação: Converte o objeto de respostas para o formato do backend
@@ -58,8 +58,6 @@ export default function FeedbackForm({
             outcome,
           })),
         };
-
-        console.log("Enviando payload formatado:", payload);
 
         // 3. Chamada à API
         await answerService.submitAnswers(payload);
@@ -75,7 +73,7 @@ export default function FeedbackForm({
         "Não foi possível processar seu feedback.";
       Alert.alert("Erro no envio", message);
     } finally {
-      setIsSubmitting(false); // Libera o botão independente do resultado
+      setIsSubmitting(false);
     }
   };
 

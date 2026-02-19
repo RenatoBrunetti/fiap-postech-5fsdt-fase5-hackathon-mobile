@@ -6,6 +6,12 @@ export const userService = {
     const response = await api.get<User>("/users/me");
     return response.data;
   },
+
+  async getById(id: string): Promise<User> {
+    const response = await api.get<User>(`/users/${id}`);
+    return response.data;
+  },
+
   async searchUsers({
     roleName,
     searchQuery,
@@ -29,13 +35,18 @@ export const userService = {
     return response.data;
   },
 
+  async getTeachersBySchool(schoolId: string): Promise<User[]> {
+    const response = await api.get<User[]>(`users/teachers/school/${schoolId}`);
+    return response.data;
+  },
+
   async createAndAssign(data: {
     name: string;
     email: string;
     password: string;
     document: string;
     roleId: string;
-    classId: string;
+    classId?: string;
   }): Promise<User> {
     const response = await api.post<User>("/users/create-and-assign", data);
     return response.data;

@@ -79,22 +79,30 @@ export default function CreateUser() {
     try {
       setLoading(true);
       if (!user) throw new Error("Usuário não autenticado");
-      if (!classId) throw new Error("Class ID não fornecido");
       const payload = {
         ...form,
         roleId: roles.find((r) => r.name === roleType)?.id,
         schoolId,
-        classId, // Se veio da tela de turma, envia o vínculo
+        classId,
       };
 
       // Rota inteligente que você mencionou
       await userService.createAndAssign(payload);
 
+      setForm({
+        ...initialFormState,
+        roleId: roles.find((r) => r.name === roleType)?.id || "",
+      });
+      setShowPassword(false);
+      setShowConfirmPassword(false);
+
       Alert.alert("Sucesso", "Usuário criado com sucesso!", [
         {
           text: "OK",
           onPress: () =>
-            router.push(`/admin/schools/${schoolId}/classes/${classId}`),
+            classId
+              ? router.replace(`/admin/schools/${schoolId}/classes/${classId}`)
+              : router.replace(`/admin/schools/${schoolId}/teachers`),
         },
       ]);
     } catch (error: any) {
@@ -103,6 +111,15 @@ export default function CreateUser() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const initialFormState = {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    document: "",
+    roleId: "",
   };
 
   return (
@@ -176,7 +193,7 @@ export default function CreateUser() {
               placeholder="********"
             />
             <Ionicons
-              name={showPassword ? "eye" : "eye-off"}
+              name={showConfirmPassword ? "eye" : "eye-off"}
               style={styles.passwordIcon}
               size={24}
               color={showConfirmPassword ? "#007AFF" : "#ddd"}
@@ -192,7 +209,9 @@ export default function CreateUser() {
             {loading ? (
               <ActivityIndicator color="#FFF" />
             ) : (
-              <Text style={styles.saveText}>Cadastrar e Vincular</Text>
+              <Text style={styles.saveText}>
+                {classId ? "Cadastrar e Vincular" : "Cadastrar"}
+              </Text>
             )}
           </TouchableOpacity>
         </View>
