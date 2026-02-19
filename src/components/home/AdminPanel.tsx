@@ -46,12 +46,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E1E7EF",
     gap: 16,
-    // Sombra leve para profundidade (iOS)
+    // Light shadow for depth (iOS)
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
     shadowRadius: 4,
-    // Sombra leve (Android)
+    // Light shadow (Android)
     elevation: 2,
   },
   adminCardMainContent: {
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#667085",
     marginTop: 2,
-    maxWidth: "85%", // Evita que o texto encoste no ícone da direita
+    maxWidth: "85%", // Prevents text from touching the right icon
   },
   adminRightIcon: {
     right: 8,

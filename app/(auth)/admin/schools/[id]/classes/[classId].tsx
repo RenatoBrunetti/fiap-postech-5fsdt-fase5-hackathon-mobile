@@ -93,7 +93,7 @@ export default function ClassManagement() {
             try {
               setLoading(true);
 
-              // Chamada ao serviço para desvincular
+              // Call the service to unlink
               await classUserService.unassign({
                 classId,
                 userId,
@@ -116,8 +116,8 @@ export default function ClassManagement() {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      {/* Header com infos da Turma */}
+    <SafeAreaView style={styles.container} edges={["top"]}>
+      {/* Header with class info */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={24} color="#1A1C1E" />
@@ -130,7 +130,7 @@ export default function ClassManagement() {
         </View>
       </View>
 
-      {/* Seletor de Abas (Tabs) */}
+      {/* Tab Selector */}
       <View style={styles.tabBar}>
         <TouchableOpacity
           style={[styles.tab, activeTab === "students" && styles.activeTab]}
@@ -160,7 +160,7 @@ export default function ClassManagement() {
         </TouchableOpacity>
       </View>
 
-      {/* Conteúdo da Aba */}
+      {/* Tab Content */}
       <FlatList
         data={activeTab === "students" ? students : teachers}
         keyExtractor={(item) => item.id}
@@ -174,7 +174,7 @@ export default function ClassManagement() {
             <TouchableOpacity
               style={styles.addInlineBtn}
               onPress={() => {
-                // Navegação para a tela de busca e vínculo
+                // Navigate to the search and link screen
                 router.push(
                   `/admin/schools/${schoolId}/classes/${classId}/link?type=${activeTab}`,
                 );
@@ -202,7 +202,7 @@ export default function ClassManagement() {
         )}
       />
 
-      {/* Botão Flutuante de Adição */}
+      {/* Floating Add Button */}
       <TouchableOpacity
         style={styles.fab}
         onPress={() =>

@@ -21,7 +21,7 @@ export default function SplashAnimation() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff", // Garanta que o fundo combine com a animação
+    backgroundColor: "#ffffff", // Ensure the background matches the animation
     justifyContent: "center",
     alignItems: "center",
   },

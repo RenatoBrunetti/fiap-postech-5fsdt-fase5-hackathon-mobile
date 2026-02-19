@@ -92,7 +92,7 @@ export default function FeedbackList({
                   ? styles.cardAnsweredBackground
                   : styles.cardUnansweredBackground,
             ]}
-            onPress={() => router.push(`/feedback/${item.id}`)} // Navegação dinâmica
+            onPress={() => router.push(`/feedback/${item.id}`)} // Dynamic navigation
           >
             <View>
               <Text style={styles.cardTitle}>{item.title}</Text>

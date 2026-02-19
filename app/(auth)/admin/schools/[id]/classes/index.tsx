@@ -27,11 +27,11 @@ export default function SchoolClasses() {
   const loadData = async () => {
     try {
       setLoading(true);
-      // Buscamos os dados da escola para exibir o nome no header
+      // Fetch school data to display the name in the header
       const school = await schoolService.getById(id);
       setSchoolName(school.name);
 
-      // Buscamos as turmas vinculadas a esta escola
+      // Fetch the classes linked to this school
       const data = await classService.getBySchoolId(id);
       setClasses(data);
     } catch (error) {
@@ -49,7 +49,7 @@ export default function SchoolClasses() {
   );
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.container} edges={["top"]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={24} color="#1A1C1E" />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
   Alert,
 } from "react-native";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -33,7 +33,13 @@ export default function LinkUser() {
   const roleLabel = type === "students" ? "Aluno" : "Professor";
   const MIN_TYPE_LENGTH = 3;
 
-  // Busca de usuários
+  useFocusEffect(
+    useCallback(() => {
+      setQuery("");
+    }, []),
+  );
+
+  // User search
   const handleSearch = async (text: string) => {
     setQuery(text);
     if (text.length < MIN_TYPE_LENGTH) {
@@ -43,7 +49,7 @@ export default function LinkUser() {
 
     try {
       setLoading(true);
-      // Filtramos por tipo (estudante ou professor) e pela query
+      // Filter by type (student or teacher) and by query
       const users = await userService.searchUsers({
         searchQuery: text,
         roleName: type === "students" ? "Student" : "Teacher",
@@ -77,7 +83,7 @@ export default function LinkUser() {
   };
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
           <Ionicons name="close" size={24} color="#1A1C1E" />

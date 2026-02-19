@@ -35,7 +35,7 @@ export default function FeedbackForm({
   };
 
   const handleSubmit = async () => {
-    // 1. Validação: Verifica se todas as questões foram respondidas
+    // 1. Validation: Check if all questions have been answered
     const totalQuestions = feedback?.questions?.length || 0;
     const answeredQuestions = Object.keys(answers).length;
 
@@ -50,7 +50,7 @@ export default function FeedbackForm({
     setIsSubmitting(true);
     try {
       if (feedback) {
-        // 2. Transformação: Converte o objeto de respostas para o formato do backend
+        // 2. Transformation: Convert the answers object to the backend format
         const payload = {
           feedbackId: feedback.id,
           questions: Object.entries(answers).map(([questionId, outcome]) => ({
@@ -59,7 +59,7 @@ export default function FeedbackForm({
           })),
         };
 
-        // 3. Chamada à API
+        // 3. API call
         await answerService.submitAnswers(payload);
 
         Alert.alert("Sucesso", "Obrigado pelo seu feedback!", [
@@ -83,7 +83,7 @@ export default function FeedbackForm({
     Object.keys(answers).length === feedback.questions.length;
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <StatusBar style="dark" />
 
       <View style={styles.header}>
@@ -142,7 +142,7 @@ export default function FeedbackForm({
         <TouchableOpacity
           style={[
             styles.submitButton,
-            (!isFormComplete || isSubmitting) && { backgroundColor: "#D0D5DD" }, // Cor de desabilitado
+            (!isFormComplete || isSubmitting) && { backgroundColor: "#D0D5DD" }, // Disabled color
           ]}
           onPress={handleSubmit}
           disabled={!isFormComplete || isSubmitting}
@@ -235,14 +235,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#F2F4F7",
     backgroundColor: "#F9FAFB",
-    width: "18%", // Garante que caibam 5 na linha com espaçamento
+    width: "18%", // Ensures 5 items fit in a row with spacing
   },
   emojiButtonActive: {
     backgroundColor: "#E0F2FE",
     borderColor: "#007AFF",
   },
   emojiIcon: {
-    fontSize: 28, // Emoji maior para destaque
+    fontSize: 28, // Larger emoji for emphasis
     marginBottom: 4,
   },
   emojiValue: {

@@ -32,7 +32,7 @@ export default function AuthLayout() {
         },
       }}
     >
-      {/* 1. ABA HOME */}
+      {/* 1. HOME TAB */}
       <Tabs.Screen
         name="home"
         options={{
@@ -43,12 +43,12 @@ export default function AuthLayout() {
         }}
       />
 
-      {/* 2. ABA PERFIL (Reutilizando sua tela dinâmica) */}
+      {/* 2. PROFILE TAB (Reusing the dynamic screen) */}
       <Tabs.Screen
         name="admin/users/[id]"
         options={{
           title: "Perfil",
-          // Truque: Forçamos o link para o ID do usuário logado
+          // Trick: Force the link to the logged-in user's ID
           href: user ? `/admin/users/${user.id}` : null,
           tabBarIcon: ({ color }) => (
             <Ionicons name="person" size={24} color={color} />
@@ -56,7 +56,7 @@ export default function AuthLayout() {
         }}
       />
 
-      {/* 3. ABA SAIR (Apenas como botão de ação) */}
+      {/* 3. LOGOUT TAB (Action button only) */}
       <Tabs.Screen
         name="logout"
         options={{
@@ -73,7 +73,7 @@ export default function AuthLayout() {
         }}
       />
 
-      {/* Esconde a pasta de escolas inteira */}
+      {/* Hide the entire schools folder */}
       <Tabs.Screen name="admin/schools/index" options={{ href: null }} />
       <Tabs.Screen name="admin/schools/create" options={{ href: null }} />
       <Tabs.Screen
@@ -99,7 +99,7 @@ export default function AuthLayout() {
       <Tabs.Screen name="feedback/[id]" options={{ href: null }} />
       <Tabs.Screen name="feedback/create" options={{ href: null }} />
 
-      {/* Esconde a criação de usuário (que não seja o perfil) */}
+      {/* Hide user creation (other than profile) */}
       <Tabs.Screen name="admin/users/create" options={{ href: null }} />
     </Tabs>
   );

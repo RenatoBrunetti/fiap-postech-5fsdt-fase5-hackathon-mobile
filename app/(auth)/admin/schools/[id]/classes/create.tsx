@@ -84,7 +84,7 @@ export default function CreateClass() {
   };
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <StatusBar style="dark" />
 
       <View style={styles.header}>
@@ -143,7 +143,7 @@ export default function CreateClass() {
             <Ionicons name="chevron-down" size={20} color="#667085" />
           </TouchableOpacity>
 
-          {/* Modal de Seleção */}
+          {/* Selection Modal */}
           <Modal
             visible={showGradeModal}
             animationType="slide"

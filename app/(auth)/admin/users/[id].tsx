@@ -26,12 +26,12 @@ export default function UserProfile() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Verificação de segurança: Se o ID ainda não chegou do roteador, não faz nada
+    // 1. Safety check: If the ID hasn't arrived from the router yet, do nothing
     if (!id) return;
 
     async function loadUser() {
       try {
-        setLoading(true); // Garante que o loading comece ao mudar de ID
+        setLoading(true); // Ensure loading starts when the ID changes
         const userData = await userService.getById(id);
 
         if (!userData) {
@@ -40,7 +40,7 @@ export default function UserProfile() {
           return;
         }
 
-        // 2. Tente carregar as classes, mas não deixe isso quebrar o perfil
+        // 2. Try loading the classes, but don't let it break the profile
         let filteredData: any = { ...userData };
         try {
           const classesData = await classService.getAllByUser(userData.id);
@@ -63,34 +63,6 @@ export default function UserProfile() {
     loadUser();
   }, [id]);
 
-  // useEffect(() => {
-  //   async function loadUser() {
-  //     try {
-  //       const userData = await userService.getById(id);
-  //       if (!userData) {
-  //         Alert.alert(
-  //           "Usuário não encontrado",
-  //           "O usuário solicitado não existe.",
-  //         );
-  //         router.back();
-  //         return;
-  //       }
-  //       const classesData = await classService.getAllByUser(userData.id);
-  //       const filteredData = classesData.length
-  //         ? { ...userData, classes: classesData }
-  //         : userData;
-  //       setUser(filteredData);
-  //       setUserRoleName(userData.role?.name || "");
-  //     } catch (error) {
-  //       Alert.alert("Erro", "Não foi possível carregar os dados do usuário.");
-  //       router.back();
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   loadUser();
-  // }, [id]);
-
   if (loading) {
     return (
       <View style={styles.center}>
@@ -102,7 +74,7 @@ export default function UserProfile() {
   const isTeacher = user?.role?.name?.toLowerCase() === "teacher";
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.container} edges={["top"]}>
       <StatusBar style="dark" />
 
       <View style={styles.header}>
@@ -120,7 +92,7 @@ export default function UserProfile() {
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        {/* Card Principal de Identidade */}
+        {/* Main Identity Card */}
         <View style={styles.profileCard}>
           <View style={styles.avatarLarge}>
             <Text style={styles.avatarTextLarge}>
@@ -145,7 +117,7 @@ export default function UserProfile() {
           </View>
         </View>
 
-        {/* Informações de Contato e Documentos */}
+        {/* Contact and Document Information */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Dados Pessoais</Text>
 
@@ -168,7 +140,7 @@ export default function UserProfile() {
           </View>
         </View>
 
-        {/* Vínculos (Turmas/Escolas) */}
+        {/* Associations (Classes/Schools) */}
         {userRoleName?.toLowerCase() !== "admin" && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
@@ -185,6 +157,7 @@ export default function UserProfile() {
                       `/admin/schools/${cls.schoolId}/classes/${cls.id}`,
                     )
                   }
+                  disabled={userRoleName?.toLowerCase() === "student"}
                 >
                   <View>
                     <Text style={styles.classItemName}>{cls.name}</Text>
@@ -192,7 +165,13 @@ export default function UserProfile() {
                       {cls.school?.name} • {cls.year}
                     </Text>
                   </View>
-                  <Ionicons name="chevron-forward" size={18} color="#D0D5DD" />
+                  {userRoleName?.toLowerCase() !== "student" && (
+                    <Ionicons
+                      name="chevron-forward"
+                      size={18}
+                      color="#D0D5DD"
+                    />
+                  )}
                 </TouchableOpacity>
               ))
             ) : (

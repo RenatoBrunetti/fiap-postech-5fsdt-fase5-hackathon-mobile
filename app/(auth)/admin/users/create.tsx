@@ -21,7 +21,7 @@ import { roleService } from "@/services/role.service";
 export default function CreateUser() {
   const { user } = useAuth();
   const router = useRouter();
-  // Pegamos o schoolId, classId e a role (string amigável) da URL
+  // Get the schoolId, classId, and role (friendly string) from the URL
   const {
     schoolId,
     classId,
@@ -50,7 +50,7 @@ export default function CreateUser() {
       try {
         const data = await roleService.getAll();
         setRoles(data);
-        // Busca a roleId que corresponde ao tipo passado (Student ou Teacher)
+        // Find the roleId that matches the given type (Student or Teacher)
         const targetRole = data.find((r: any) => r.name === roleType);
         if (targetRole) setForm((prev) => ({ ...prev, roleId: targetRole.id }));
       } catch (e) {
@@ -86,7 +86,7 @@ export default function CreateUser() {
         classId,
       };
 
-      // Rota inteligente que você mencionou
+      // Smart route for creating and assigning user
       await userService.createAndAssign(payload);
 
       setForm({
@@ -123,7 +123,7 @@ export default function CreateUser() {
   };
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <StatusBar style="dark" />
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>

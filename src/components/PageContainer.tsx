@@ -12,6 +12,6 @@ export function PageContainer({ children, style, ...props }: ViewProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F7FA", // Cor padrão das páginas
+    backgroundColor: "#F5F7FA", // Default page background color
   },
 });

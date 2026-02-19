@@ -47,7 +47,7 @@ export default function SchoolTeachers() {
   );
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.container} edges={["top"]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={24} color="#1A1C1E" />
@@ -95,7 +95,7 @@ export default function SchoolTeachers() {
               <View style={styles.teacherInfo}>
                 <Text style={styles.teacherName}>{item.name}</Text>
                 <Text style={styles.teacherEmail}>{item.email}</Text>
-                {/* Se o seu backend retornar as turmas, você pode listar aqui */}
+                {/* If the backend returns the classes, you can list them here */}
                 <View style={styles.tagContainer}>
                   <Text style={styles.roleTag}>Professor</Text>
                 </View>

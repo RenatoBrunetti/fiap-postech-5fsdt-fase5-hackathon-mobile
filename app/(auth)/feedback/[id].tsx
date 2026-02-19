@@ -21,7 +21,7 @@ export default function FeedbackDetails() {
   useEffect(() => {
     async function loadFeedback() {
       try {
-        // Chamada para o seu endpoint de detalhes no Backend
+        // Call the backend details endpoint
         const feedbackData = await feedbackService.getFeedbackById(id);
         setFeedback(feedbackData);
       } catch (error) {

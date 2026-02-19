@@ -29,14 +29,14 @@ export default function FeedbackView({
     fetchAnswers();
   }, [feedback]);
 
-  // Helper para encontrar a resposta específica de uma questão
+  // Helper to find the specific answer for a question
   const getAnswerForQuestion = (questionId: string) => {
     const answer = answers.find((a) => a.questionId === questionId);
     return answer ? answer.outcome : null;
   };
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <StatusBar style="dark" />
 
       <View style={styles.header}>

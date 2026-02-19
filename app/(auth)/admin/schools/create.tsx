@@ -26,7 +26,7 @@ export default function CreateSchool() {
   });
 
   const handleSave = async () => {
-    // Validação básica
+    // Basic validation
     if (!form.name.trim() || !form.document.trim()) {
       Alert.alert("Erro", "Por favor, preencha todos os campos.");
       return;
@@ -55,7 +55,7 @@ export default function CreateSchool() {
   };
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <StatusBar style="dark" />
 
       <View style={styles.header}>

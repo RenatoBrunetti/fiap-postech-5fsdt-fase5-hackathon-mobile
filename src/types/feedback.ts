@@ -12,5 +12,5 @@ export interface Feedback {
   class: Class;
   user: User;
   questions: Question[];
-  isAnswered?: boolean; // Campo opcional para indicar se o feedback foi respondido
+  isAnswered?: boolean; // Optional field to indicate whether the feedback has been answered
 }

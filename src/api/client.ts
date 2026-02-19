@@ -12,72 +12,91 @@ export const api = axios.create({
   },
 });
 
-// Interceptor de Requisição: Injeta o Token
+let isRefreshing = false;
+let failedQueue: any[] = [];
+
+const processQueue = (error: any, token: string | null = null) => {
+  failedQueue.forEach((prom) => {
+    if (error) {
+      prom.reject(error);
+    } else {
+      prom.resolve(token);
+    }
+  });
+  failedQueue = [];
+};
+
+// Request Interceptor: Injects the Token
 api.interceptors.request.use(
   async (config) => {
     const token = await storage.getToken();
-
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  },
+  (error) => Promise.reject(error),
 );
 
-// Interceptor de Resposta: Lida com 401 (Token Expirado)
+// Response Interceptor: Handles 401 (Expired Token)
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
 
-    // Não fazer refresh se for a própria rota de login ou refresh
-    if (
-      originalRequest.url?.includes("/auth/login") ||
-      originalRequest.url?.includes("/auth/refresh")
-    ) {
+    if (error.response?.status !== 401 || originalRequest._retry) {
       return Promise.reject(error);
     }
 
-    // Se erro for 401 e não for uma tentativa de renovação infinita
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
-      try {
-        // 1. Tenta renovar o token (ajuste o endpoint conforme seu backend)
-        // Normalmente enviamos o token antigo ou um refresh_token salvo
-        const currentRefreshToken = await storage.getRefreshToken();
-        if (!currentRefreshToken) {
-          await storage.removeToken();
-          await storage.removeRefreshToken();
-          // Em vez de throw, apenas rejeite para o AuthContext lidar
-          return Promise.reject(error);
-        }
-
-        const response = await axios.post(`${baseURL}/auth/refresh`, {
-          refreshToken: currentRefreshToken,
-        });
-
-        const { accessToken, refreshToken: newRefreshToken } = response.data;
-
-        // 2. Salva o novo token
-        await storage.saveToken(accessToken);
-        await storage.saveRefreshToken(newRefreshToken);
-
-        // 3. Atualiza o header da requisição que falhou e tenta de novo
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-        return api(originalRequest);
-      } catch (refreshError) {
-        // Se o refresh falhar, aí sim deslogamos
-        await storage.removeToken();
-        await storage.removeRefreshToken();
-        // Você pode emitir um evento ou o AuthContext notará a falta do token
-        return Promise.reject(refreshError);
-      }
+    if (originalRequest.url?.includes("/auth/refresh")) {
+      return Promise.reject(error);
     }
-    return Promise.reject(error);
+
+    if (isRefreshing) {
+      // If a refresh is already in progress, queue this request
+      return new Promise((resolve, reject) => {
+        failedQueue.push({ resolve, reject });
+      })
+        .then((token) => {
+          originalRequest.headers.Authorization = `Bearer ${token}`;
+          return api(originalRequest);
+        })
+        .catch((err) => Promise.reject(err));
+    }
+
+    originalRequest._retry = true;
+    isRefreshing = true;
+
+    try {
+      const currentRefreshToken = await storage.getRefreshToken();
+
+      if (!currentRefreshToken) throw new Error("No refresh token");
+
+      // IMPORTANT: Use raw axios here to avoid the interceptors from the 'api' instance
+      const response = await axios.post(`${baseURL}/auth/refresh`, {
+        refreshToken: currentRefreshToken,
+      });
+
+      const { accessToken, refreshToken: newRefreshToken } = response.data;
+
+      await storage.saveToken(accessToken);
+      await storage.saveRefreshToken(newRefreshToken);
+
+      // Update the main instance for subsequent calls
+      api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+
+      processQueue(null, accessToken);
+
+      return api(originalRequest);
+    } catch (refreshError) {
+      processQueue(refreshError, null);
+      await storage.removeToken();
+      await storage.removeRefreshToken();
+
+      // Here you could redirect or force a logout
+      return Promise.reject(refreshError);
+    } finally {
+      isRefreshing = false;
+    }
   },
 );

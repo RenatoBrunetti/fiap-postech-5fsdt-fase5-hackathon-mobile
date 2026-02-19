@@ -23,9 +23,9 @@ export default function CreateFeedback() {
   const [title, setTitle] = useState("");
   const [selectedClass, setSelectedClass] = useState("");
   const [classes, setClasses] = useState<any[]>([]);
-  const [questions, setQuestions] = useState([{ title: "" }]); // Inicia com uma pergunta
+  const [questions, setQuestions] = useState([{ title: "" }]); // Start with one question
 
-  // 1. Carrega as turmas disponíveis para o professor
+  // 1. Load the available classes for the teacher
   useEffect(() => {
     async function loadClasses() {
       if (!user) return;

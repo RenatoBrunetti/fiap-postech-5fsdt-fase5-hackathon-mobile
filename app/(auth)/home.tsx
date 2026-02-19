@@ -22,7 +22,7 @@ export default function Home() {
   const [userRoleName, setUserRoleName] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Carrega sempre que a tela ganhar foco
+  // Loads whenever the screen gains focus
   useFocusEffect(
     useCallback(() => {
       if (user) {

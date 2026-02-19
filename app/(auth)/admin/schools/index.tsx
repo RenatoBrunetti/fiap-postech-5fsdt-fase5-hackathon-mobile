@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: "#1A1C1E",
-    paddingRight: 6, // Espaço para evitar que o nome encoste no botão de excluir
+    paddingRight: 6, // Space to prevent the name from touching the delete button
   },
   schoolDoc: {
     fontSize: 14,

@@ -34,7 +34,7 @@ export default function FeedbackStats({
   useEffect(() => {
     const fetchStats = async () => {
       if (feedback) {
-        // Simulando cálculo de estatísticas a partir das respostas
+        // Calculate statistics from the answers
         const answers = await answerService.getAllByFeedbackId(feedback.id);
 
         const calculatedStats = feedback.questions.map((question) => {
@@ -61,7 +61,7 @@ export default function FeedbackStats({
   }, [feedback]);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <StatusBar style="dark" />
 
       <View style={styles.header}>
@@ -99,7 +99,7 @@ export default function FeedbackStats({
                 </Text>
               </View>
 
-              {/* Barra de progresso visual */}
+              {/* Visual progress bar */}
               <View style={styles.progressTrack}>
                 <View
                   style={[
