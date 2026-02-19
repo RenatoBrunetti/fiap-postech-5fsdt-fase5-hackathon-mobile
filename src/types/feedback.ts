@@ -1,0 +1,16 @@
+import { Class } from "./class";
+import { Question } from "./question";
+import { User } from "./user";
+
+export interface Feedback {
+  id: string;
+  title: string;
+  classId: string;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
+  class: Class;
+  user: User;
+  questions: Question[];
+  isAnswered?: boolean; // Campo opcional para indicar se o feedback foi respondido
+}
