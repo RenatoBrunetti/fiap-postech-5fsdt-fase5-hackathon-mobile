@@ -186,7 +186,10 @@ export default function ClassManagement() {
         }
         renderItem={({ item }) => (
           <View style={styles.itemCard}>
-            <View style={styles.itemInfo}>
+            <TouchableOpacity
+              style={styles.itemInfo}
+              onPress={() => router.push(`/admin/users/${item.id}`)}
+            >
               <View style={styles.avatar}>
                 <Text style={styles.avatarText}>{item.name.charAt(0)}</Text>
               </View>
@@ -194,7 +197,7 @@ export default function ClassManagement() {
                 <Text style={styles.itemName}>{item.name}</Text>
                 <Text style={styles.itemEmail}>{item.email}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => handleUnlink(item.id)}>
               <Ionicons name="close-circle" size={22} color="#F04438" />
             </TouchableOpacity>
