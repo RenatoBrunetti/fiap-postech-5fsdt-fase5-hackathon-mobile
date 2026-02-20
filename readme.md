@@ -114,13 +114,13 @@ O **Hackathon Feedback App** é o aplicativo mobile do projeto do hackathon com 
 <br>
 <br>
 
-# ⛭ Informacoes Tecnicas
+# ⛭ Informações Técnicas
 
 ## → Objetivo do serviço
 
-- Fornecer uma experiencia mobile rapida e intuitiva para alunos e professores.
+- Fornecer uma experiência mobile rápida e intuitiva para alunos e professores.
 - Registrar feedbacks e respostas por alunos.
-- Integrar-se com a API do backend para autenticacao e dados.
+- Integrar-se com a API do backend para autenticação e dados.
 
 ## → Tecnologias utilizadas
 
@@ -134,12 +134,12 @@ O **Hackathon Feedback App** é o aplicativo mobile do projeto do hackathon com 
 
 ## → Arquitetura do sistema
 
-O app utiliza uma arquitetura modular, com camadas de **telas**, **servicos de API**, **contextos de autenticacao** e **tipos compartilhados**. Isso organiza a logica de negócio e reduz acoplamento entre UI e infraestrutura.
+O app utiliza uma arquitetura modular, com camadas de **telas**, **serviços de API**, **contextos de autenticação** e **tipos compartilhados**. Isso organiza a lógica de negócio e reduz acoplamento entre UI e infraestrutura.
 
 ```mermaid
 flowchart TD
-	U[Usuario] --> M[App Mobile - React Native]
-	M --> S[Camada de Servicos - Axios]
+	U[Usuário] --> M[App Mobile - React Native]
+	M --> S[Camada de Serviços - Axios]
 	S --> B[API REST - Backend]
 	B --> D[(PostgreSQL)]
 ```
