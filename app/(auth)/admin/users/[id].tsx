@@ -16,6 +16,7 @@ import { StatusBar } from "expo-status-bar";
 import { userService } from "@/services/user.service";
 import { classService } from "@/services/class.service";
 import { User } from "@/types/user";
+import role from "@/utils/role";
 
 export default function UserProfile() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -112,7 +113,7 @@ export default function UserProfile() {
                 { color: isTeacher ? "#007AFF" : "#027A48" },
               ]}
             >
-              {user?.role?.name}
+              {role.formatRoleName(user?.role?.name)}
             </Text>
           </View>
         </View>

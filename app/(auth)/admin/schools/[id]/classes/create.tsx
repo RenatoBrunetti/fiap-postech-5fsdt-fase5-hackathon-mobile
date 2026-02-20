@@ -33,6 +33,12 @@ export default function CreateClass() {
     gradeId: "",
   });
 
+  const inititalState = {
+    name: "",
+    year: new Date().getFullYear().toString(),
+    gradeId: "",
+  };
+
   const loadData = async () => {
     try {
       setLoading(true);
@@ -49,6 +55,7 @@ export default function CreateClass() {
   useFocusEffect(
     useCallback(() => {
       loadData();
+      setForm(inititalState);
     }, [schoolId]),
   );
 
