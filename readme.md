@@ -2,7 +2,7 @@
 
 <div style="display:flex;flex-wrap:wrap;gap:16px;">
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/images/logo.png" width="200" />
+		<img src="./assets/images/logo.png" width="300" />
 	</figure>
 </div>
 
