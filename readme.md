@@ -10,11 +10,11 @@ O **Hackathon Feedback App** é o aplicativo mobile do projeto do hackathon com 
 
 <div style="display:flex;flex-wrap:wrap;gap:16px;">
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/splash.png" width="300" /><br>
+		<img src="./assets/screens/splash.png" width="300" />
 		<figcaption>Splash</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/login.png" width="300" /><br>
+		<img src="./assets/screens/login.png" width="300" />
 		<figcaption>Login</figcaption>
 	</figure>
 </div>
@@ -23,23 +23,23 @@ O **Hackathon Feedback App** é o aplicativo mobile do projeto do hackathon com 
 
 <div style="display:flex;flex-wrap:wrap;gap:16px;">
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/student/student-home.png" width="300" /><br>
+		<img src="./assets/screens/student/student-home.png" width="300" />
 		<figcaption>Aluno Home</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/student/student-feedback-available.png" width="300" /><br>
+		<img src="./assets/screens/student/student-feedback-available.png" width="300" />
 		<figcaption>Aluno Feedback Available</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/student/student-feedback-fill-out.png" width="300" /><br>
+		<img src="./assets/screens/student/student-feedback-fill-out.png" width="300" />
 		<figcaption>Aluno Feedback Fill Out</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/student/student-feedback-view.png" width="300" /><br>
+		<img src="./assets/screens/student/student-feedback-view.png" width="300" />
 		<figcaption>Aluno Feedback View</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/student/student-profile.png" width="300" /><br>
+		<img src="./assets/screens/student/student-profile.png" width="300" />
 		<figcaption>Aluno Perfil</figcaption>
 	</figure>
 </div>
@@ -48,19 +48,19 @@ O **Hackathon Feedback App** é o aplicativo mobile do projeto do hackathon com 
 
 <div style="display:flex;flex-wrap:wrap;gap:16px;">
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/teacher/teacher-home.png" width="300" /><br>
+		<img src="./assets/screens/teacher/teacher-home.png" width="300" />
 		<figcaption>Professor Home</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/teacher/teacher-feedback-view.png" width="300" /><br>
+		<img src="./assets/screens/teacher/teacher-feedback-view.png" width="300" />
 		<figcaption>Professor Feedback View</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/teacher/teacher-feedback-create.png" width="300" /><br>
+		<img src="./assets/screens/teacher/teacher-feedback-create.png" width="300" />
 		<figcaption>Professor Feedback Criacao</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/teacher/teacher-profile.png" width="300" /><br>
+		<img src="./assets/screens/teacher/teacher-profile.png" width="300" />
 		<figcaption>Professor Perfil</figcaption>
 	</figure>
 </div>
@@ -69,63 +69,63 @@ O **Hackathon Feedback App** é o aplicativo mobile do projeto do hackathon com 
 
 <div style="display:flex;flex-wrap:wrap;gap:16px;">
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-home.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-home.png" width="300" />
 		<figcaption>Admin Home</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-teacher.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-teacher.png" width="300" />
 		<figcaption>Admin Professor</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-teacher-create.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-teacher-create.png" width="300" />
 		<figcaption>Admin Professor Criacao</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-teacher-profile.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-teacher-profile.png" width="300" />
 		<figcaption>Admin Professor Perfil</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school.png" width="300" />
 		<figcaption>Admin Escola</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-create.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-create.png" width="300" />
 		<figcaption>Admin Escola Criacao</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-class.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-class.png" width="300" />
 		<figcaption>Admin Escola Classe</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-class-create.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-class-create.png" width="300" />
 		<figcaption>Admin Escola Classe Criacao</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-class-student.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-class-student.png" width="300" />
 		<figcaption>Admin Escola Classe Aluno</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-class-student-link.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-class-student-link.png" width="300" />
 		<figcaption>Admin Escola Classe Aluno Vinculo</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-class-student-profile.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-class-student-profile.png" width="300" />
 		<figcaption>Admin Escola Classe Aluno Perfil</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-class-teacher.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-class-teacher.png" width="300" />
 		<figcaption>Admin Escola Classe Professor</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-class-teacher-link.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-class-teacher-link.png" width="300" />
 		<figcaption>Admin Escola Classe Professor Vinculo</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-school-class-teacher-profile.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-school-class-teacher-profile.png" width="300" />
 		<figcaption>Admin Escola Classe Professor Perfil</figcaption>
 	</figure>
 	<figure style="margin:0;text-align:center;">
-		<img src="./assets/screens/admin/admin-profile.png" width="300" /><br>
+		<img src="./assets/screens/admin/admin-profile.png" width="300" />
 		<figcaption>Admin Perfil</figcaption>
 	</figure>
 </div>
