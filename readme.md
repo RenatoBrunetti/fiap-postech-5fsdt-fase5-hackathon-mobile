@@ -13,10 +13,12 @@ O **Hackathon Feedback App** é o aplicativo mobile do projeto do hackathon com 
 		<img src="./assets/screens/splash.png" width="300" />
 		<figcaption>Splash</figcaption>
 	</figure>
+	<br>
 	<figure style="margin:0;text-align:center;">
 		<img src="./assets/screens/login.png" width="300" />
 		<figcaption>Login</figcaption>
 	</figure>
+	<br>
 </div>
 
 ### Telas Autenticadas (Aluno)
