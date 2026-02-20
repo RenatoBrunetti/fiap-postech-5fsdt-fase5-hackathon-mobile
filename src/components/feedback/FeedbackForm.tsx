@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   Alert,
   ScrollView,
@@ -10,7 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
-import { Router } from "expo-router";
+import { Router, useFocusEffect } from "expo-router";
 
 import { EMOJI_MAP } from "@/constants/emojis";
 import { answerService } from "@/services/answer.service";
@@ -29,7 +29,19 @@ export default function FeedbackForm({
   setAnswers: React.Dispatch<React.SetStateAction<Record<string, any>>>;
   router: Router;
 }) {
+  const scrollRef = useRef<ScrollView>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      setAnswers({});
+      scrollToTop();
+    }, []),
+  );
+
+  const scrollToTop = () => {
+    scrollRef.current?.scrollTo({ y: 0, animated: true }); // Scrolls to top
+  };
 
   const handleUpdateAnswer = (questionId: string, value: any) => {
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
@@ -95,7 +107,11 @@ export default function FeedbackForm({
         <View style={{ width: 24 }} />
       </View>
 
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={true}
+        ref={scrollRef}
+      >
         <Text style={styles.title}>{feedback?.title}</Text>
         <Text style={styles.description}>{feedback?.class?.school?.name}</Text>
         <Text style={styles.description}>

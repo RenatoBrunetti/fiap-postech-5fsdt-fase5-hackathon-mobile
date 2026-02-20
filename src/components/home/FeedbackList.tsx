@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   Text,
   StyleSheet,
@@ -25,6 +25,8 @@ export default function FeedbackList({
   setLoading: (loading: boolean) => void;
   userRoleName: string;
 }) {
+  const flatListRef = useRef<FlatList>(null);
+
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -45,15 +47,23 @@ export default function FeedbackList({
     }
   };
 
+  const scrollToTop = () => {
+    if (flatListRef.current) {
+      flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
+    }
+  };
+
   useFocusEffect(
     useCallback(() => {
       fetchFeedbacks();
+      scrollToTop();
     }, [user]),
   );
 
   const onRefresh = () => {
     setRefreshing(true);
     fetchFeedbacks();
+    scrollToTop();
   };
 
   return (
@@ -74,6 +84,7 @@ export default function FeedbackList({
       <FlatList
         data={feedbacks}
         keyExtractor={(item) => item.id}
+        ref={flatListRef}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }

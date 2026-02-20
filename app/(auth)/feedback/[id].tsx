@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { View, StyleSheet, ActivityIndicator, Text } from "react-native";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 
 import FeedbackForm from "@/components/feedback/FeedbackForm";
 import FeedbackStats from "@/components/feedback/FeedbackStats";
@@ -18,20 +18,23 @@ export default function FeedbackDetails() {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [answers, setAnswers] = useState<Record<string, any>>({});
 
-  useEffect(() => {
-    async function loadFeedback() {
-      try {
-        // Call the backend details endpoint
-        const feedbackData = await feedbackService.getFeedbackById(id);
-        setFeedback(feedbackData);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
+  useFocusEffect(
+    useCallback(() => {
+      loadFeedback();
+    }, [id]),
+  );
+
+  const loadFeedback = async () => {
+    try {
+      // Call the backend details endpoint
+      const feedbackData = await feedbackService.getFeedbackById(id);
+      setFeedback(feedbackData);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
-    loadFeedback();
-  }, [id]);
+  };
 
   if (loading) {
     return (
