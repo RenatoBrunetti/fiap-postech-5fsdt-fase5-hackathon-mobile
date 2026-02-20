@@ -1,6 +1,14 @@
 # Hackathon Feedback App - Mobile
 
+<div style="display:flex;flex-wrap:wrap;gap:16px;">
+	<figure style="margin:0;text-align:center;">
+		<img src="./assets/images/logo.png" width="200" />
+	</figure>
+</div>
+
 O **Hackathon Feedback App** é o aplicativo mobile do projeto do hackathon com o tema **"Auxilio aos professores e professoras no ensino publico"**. O objetivo é oferecer um canal simples e acessivel para que estudantes enviem feedbacks sobre aulas, palestras e materias, enquanto professores e escolas acompanham a percepcao das turmas e tomam decisoes baseadas em dados.
+
+`* Renato Carapiá Brunetti / RM362132`
 
 [Repositório GitHub](https://github.com/RenatoBrunetti/fiap-postech-5fsdt-fase5-hackathon-mobile)
 
