@@ -131,7 +131,7 @@ O app utiliza uma arquitetura modular, com camadas de **telas**, **servicos de A
 ```mermaid
 flowchart TD
 	U[Usuario] --> M[App Mobile - React Native]
-	M --> S[Camada de Servicos (Axios)]
+	M --> S[Camada de Servicos - Axios]
 	S --> B[API REST - Backend]
 	B --> D[(PostgreSQL)]
 ```
