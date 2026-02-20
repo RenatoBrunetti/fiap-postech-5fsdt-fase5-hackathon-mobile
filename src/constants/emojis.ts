@@ -3,5 +3,5 @@ export const EMOJI_MAP: Record<number, string> = {
   2: "😕",
   3: "😐",
   4: "🙂",
-  5: "😍",
+  5: "🤩",
 };

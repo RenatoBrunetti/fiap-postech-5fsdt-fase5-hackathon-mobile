@@ -16,6 +16,7 @@ import { EMOJI_MAP } from "@/constants/emojis";
 import { answerService } from "@/services/answer.service";
 import { Question } from "@/types/question";
 import { Feedback } from "@/types/feedback";
+import answer from "@/utils/answer";
 
 export default function FeedbackForm({
   feedback,
@@ -129,7 +130,7 @@ export default function FeedbackForm({
                           isSelected && styles.emojiValueActive,
                         ]}
                       >
-                        {num}
+                        {answer.getMappedAnswer(num)}
                       </Text>
                     </TouchableOpacity>
                   );
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   infoText: { color: "#98A2B3" },
-  questionContainer: { marginBottom: 24 },
+  questionContainer: { marginBottom: 18 },
   questionText: {
     fontSize: 16,
     fontWeight: "600",
@@ -225,12 +226,15 @@ const styles = StyleSheet.create({
   emojiContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: "#EAECF0",
+    paddingBottom: 16,
   },
   emojiButton: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
+    paddingHorizontal: 2,
+    paddingVertical: 8,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: "#F2F4F7",
@@ -246,8 +250,9 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   emojiValue: {
-    fontSize: 12,
-    color: "#667085",
+    fontSize: 7.25,
+    color: "#495267",
+    textAlign: "center",
   },
   emojiValueActive: {
     color: "#007AFF",

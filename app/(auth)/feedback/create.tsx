@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   View,
   Text,
@@ -9,10 +9,9 @@ import {
   Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-import { api } from "@/api/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { classUserService } from "@/services/classUser.service";
 import { feedbackService } from "@/services/feedback.service";
@@ -24,6 +23,14 @@ export default function CreateFeedback() {
   const [selectedClass, setSelectedClass] = useState("");
   const [classes, setClasses] = useState<any[]>([]);
   const [questions, setQuestions] = useState([{ title: "" }]); // Start with one question
+
+  useFocusEffect(
+    useCallback(() => {
+      setTitle("");
+      setSelectedClass("");
+      setQuestions([{ title: "" }]);
+    }, []),
+  );
 
   // 1. Load the available classes for the teacher
   useEffect(() => {
